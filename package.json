@@ -1,0 +1,11 @@
+{
+  "name": "picit_webappver",
+  "version": "1.0.0",
+  "description": "picIt wep/app version project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jiwoong shinn",
+  "license": "ISC"
+}
