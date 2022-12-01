@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <!-- <script src="/views/js/result.js"></script> -->
+    <title>PicIt!</title>
+  </head>
+  <body>
+    <div class="title-container">
+      <form action="/" method="get" class="home-container">
+        <button type="submit" class="home-btn">◁ Home</button>
+      </form>
+      <h1 class="title">RESULT</h1>
+    </div>
+    <div class="main-content-container">
+      <div class="result-container">
+        <p class="description">Result :</p>
+        <p class="description"><%=words_len%></p>
+        <p class="description">words were found by your picture.</p>
+        <br />
+        <div class="word-container">
+          <!-- <div class="single-word-container">
+            <p class="delete-btn">x</p>
+            <p class="word"><%=data[0]%></p>
+          </div>
+          <div class="single-word-container">
+            <p class="delete-btn">x</p>
+            <p class="word"><%=data[1]%></p>
+          </div>
+          <div class="single-word-container">
+            <p class="delete-btn">x</p>
+            <p class="word"><%=data[2]%></p>
+          </div>
+          <div class="single-word-container">
+            <p class="delete-btn">x</p>
+            <p class="word"><%=data[3]%></p>
+          </div>
+          <div class="single-word-container">
+            <p class="delete-btn">x</p>
+            <p class="word"><%=data[4]%></p>
+          </div>
+          <div class="single-word-container">
+            <p class="delete-btn">x</p>
+            <p class="word"><%=data[5]%></p>
+          </div>
+          <div class="single-word-container">
+            <p class="delete-btn">x</p>
+            <p class="word"><%=data[6]%></p>
+          </div> -->
+        </div>
+      </div>
+      <div class="fake-container"></div>
+      <div class="footer-container">
+        <marquee class="footer" behavior="scroll">
+          Developed by Jiwoong Shinn, Sungwon Yuk. As a part of the graduation
+          project @SEOULTECH.
+        </marquee>
+      </div>
+      <script>
+        let lenOfWords = "<%-words_len%>";
+        let wordArray = `<%-data%>`;
+        let arr = wordArray.split(",");
+        const word_list = document.querySelector(".word-container");
+        console.log(arr);
+        window.onload = function () {
+          for (let i = 0; i < lenOfWords; i++) {
+            const temp = document.createElement("div");
+            temp.className = "single-word-container";
+            temp.innerHTML = `<p class="delete-btn">x</p><p class="word">${arr[i]}</p>`;
+            console.log(wordArray);
+            word_list.append(temp);
+          }
+          setTimeout(function () {
+            word_list.style.opacity = "100%";
+          }, 1000);
+        };
+
+        window.addEventListener("click", (e) => {
+          if (e.target.classList[0] == "delete-btn") {
+            let parent = e.target.parentNode;
+            parent.style.opacity = "0%";
+            setTimeout(function () {
+              parent.remove();
+            }, 300);
+          }
+          console.log(e.target.classList);
+        });
+      </script>
+    </div>
+  </body>
+</html>
