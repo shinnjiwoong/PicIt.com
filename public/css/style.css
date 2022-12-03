@@ -1,41 +1,46 @@
-@font-face {
-    font-family: 'tiny';
-    src: url("../../views/fonts/TINY5x3-40.otf") format("opentype");
-}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:"Helvetica";
+    font-family: 'Noto Sans KR';
 }
 
 body{
-    font-family: 'Courier New', Courier, monospace;
-    background-color: rgb(20, 38, 243)
+    font-family: 'Noto Sans KR';
+    background-color: rgb(250, 250, 250)
 
 }
 
 .title-container{
     background-color: rgb(250, 250, 250);
-    border-bottom: solid 0.1rem rgb(25, 25, 25);
+    /* border-bottom: solid 0.1rem rgb(25, 25, 25); */
     position: fixed;
     z-index: 100;
     display: flex;
-    justify-content: center;
+    justify-content:start;
     width: 100%;
+    height: 20%;
 
 }
 .title{
-    /* position: absolute; */
-    border: solid 1px rgb(25, 25, 25);
-    border-radius: 50%;
-    background-color: rgb(20, 38, 243);
-    font-size: 1.5rem;
+    position: absolute;
+    /* border: solid 1px rgb(25, 25, 25); */
+    /* border-radius: 50%; */
+    /* background-color: rgb(20, 38, 243); */
+    top: 0rem;
+    font-size: 8rem;
     font-weight: lighter;
-    color: rgb(250, 250, 250);
-    margin: auto;
-    padding: 1.5rem;
+    color: rgb(20, 38, 243);
+    /* margin: auto; */
+    /* padding: 0.5rem; */
     /* text-decoration: underline 0.1rem rgb(25, 25, 25); */
+}
+.title-container i{
+    /* position: absolute; */
+    font-size: 2rem;
+    color: rgb(20, 38, 243);
+
 }
 .form-container{
     position: absolute;
@@ -66,13 +71,12 @@ body{
     transition: all 0.1s ease-in-out;
 }
 .home-btn:hover{
-    background-color: rgb(235, 217, 12);
+    background-color: rgb(20, 38, 243);
     color: rgb(25, 25, 25);
 }
 .upload-img{
     border: none;
-    font-family: 'Helvetica';
-    color: rgb(250, 250, 250);
+    color: rgb(20, 38, 243);
     font-size: 1.5rem;
     font-weight: lighter;
     /* background-color: rgb(250, 250, 250); */
@@ -90,8 +94,9 @@ body{
 }
 
 .submit-btn:hover{
-    background-color: rgb(235, 217, 12);
-    color: rgb(25, 25, 25);
+    border: none;
+    background-color: rgb(20, 38, 243);
+    color: rgb(250, 250, 250);
 
 }
 .main-content-container{
@@ -99,7 +104,7 @@ body{
     height: 150%;
     position: absolute;
     top: 0rem;
-    padding-top: 6rem;
+    padding-top: 10rem;
 }
 .fake-container{
 
@@ -113,7 +118,7 @@ body{
     /* background-color: rgb(200, 200, 200); */
     /* margin-top: 1rem; */
     padding: 1rem;
-    color: rgb(250, 250, 250);
+    color: rgb(20, 38, 243);
 }
 .result-container{
     /* display: flex; */
@@ -187,7 +192,7 @@ body{
 }
 .delete-btn:hover{
     opacity: 100%;
-    background-color: rgb(235, 217, 12);
+    background-color: rgb(20, 38, 243);
     color: rgb(250, 250, 250);
 }
 .delete-btn:hover .single-word-container{
@@ -196,21 +201,30 @@ body{
 
 /* Project Description */
 .project-desc-container{
-    /* background-color: rgb(250, 250, 250); */
+    background-color: rgb(20, 38, 243);
     position: absolute;
     top: 10rem;
     width: 50vw;
-    height: 50vh;
+    height: 100vh;
     right: 0rem;
-    margin-right: 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+.project-desc-title{
+    color: rgb(250, 250, 250);
+    font-size: 3.5rem;
+    font-weight: normal;
+    padding-top: 2rem;
 }
 .about-project{
-    font-size: 1.5rem;
+    padding-top: 2rem;
+    font-size: 1.3rem;
     font-weight: lighter;
     color: rgb(250, 250, 250);
 }
 .usage-container{
     position: absolute;
+    padding-top: 2rem;
     top: 10rem;
     left: 1rem;
     width: 50vw;
@@ -218,7 +232,8 @@ body{
     /* background-color: rgb(250, 250, 250); */
 }
 .how-to-use{
-    font-size: 1.3rem;
+    
+    font-size: 1rem;
     font-weight: lighter;
-    color: rgb(250, 250, 250);
+    color: rgb(25, 25, 25);
 }
