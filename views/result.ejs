@@ -6,57 +6,40 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Noto+Sans+KR&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&family=Noto+Sans+KR&display=swap"
       rel="stylesheet"
     />
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Noto+Sans+KR&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;600&family=Noto+Sans+KR&display=swap");
     </style>
     <!-- <script src="/views/js/result.js"></script> -->
     <title>PicIt!</title>
   </head>
   <body>
     <div class="title-container">
-      <form action="/" method="get" class="home-container">
-        <button type="submit" class="home-btn">◁ Home</button>
-      </form>
       <h1 class="title">RESULT<i class="fa-solid fa-camera"></i></h1>
+      <form action="/" method="get" class="home-container">
+        <button type="submit" class="home-btn">HOME</button>
+      </form>
     </div>
     <div class="main-content-container">
       <div class="result-container">
-        <p class="description">Result :</p>
+        <p class="description">분석결과 :</p>
         <p class="description"><%=words_len%></p>
-        <p class="description">words were found by your picture.</p>
+        <p class="description">개의 단어가 발견되었습니다!</p>
         <br />
-        <div class="word-container">
-          <!-- <div class="single-word-container">
-            <p class="delete-btn">x</p>
-            <p class="word"><%=data[0]%></p>
+        <p class="description">
+          아래의 단어들 중 이미 아는 단어를 클릭해서 없애주세요!
+        </p>
+        <br />
+        <div class="word-container"></div>
+        <div class="word-meaning-container">
+          <div class="word-meaning-title"></div>
+          <div class="meaning-delete-btn">
+            <div class="meaning-delete-left"></div>
+            <div class="meaning-delete-right"></div>
           </div>
-          <div class="single-word-container">
-            <p class="delete-btn">x</p>
-            <p class="word"><%=data[1]%></p>
-          </div>
-          <div class="single-word-container">
-            <p class="delete-btn">x</p>
-            <p class="word"><%=data[2]%></p>
-          </div>
-          <div class="single-word-container">
-            <p class="delete-btn">x</p>
-            <p class="word"><%=data[3]%></p>
-          </div>
-          <div class="single-word-container">
-            <p class="delete-btn">x</p>
-            <p class="word"><%=data[4]%></p>
-          </div>
-          <div class="single-word-container">
-            <p class="delete-btn">x</p>
-            <p class="word"><%=data[5]%></p>
-          </div>
-          <div class="single-word-container">
-            <p class="delete-btn">x</p>
-            <p class="word"><%=data[6]%></p>
-          </div> -->
+          <p class="word-meaning"></p>
         </div>
       </div>
       <div class="fake-container"></div>
@@ -67,33 +50,75 @@
         </marquee>
       </div>
       <script>
-        let lenOfWords = "<%-words_len%>";
-        let wordArray = `<%-data%>`;
+        let wordArray = `<%-title%>`;
+        let wordMeaning = `<%-meaning%>`;
         let arr = wordArray.split(",");
+        let lenOfWords = arr.length;
+        let mean_arr = wordMeaning.split("|SPLIT|");
+        const regex_number = new RegExp(/[1-9]*/);
+        console.log(regex_number.test("245"));
         const word_list = document.querySelector(".word-container");
+        const word_title = document.querySelector(".word-meaning-title");
+        const word_meaning = document.querySelector(".word-meaning");
+        const word_meaning_container = document.querySelector(
+          ".word-meaning-container"
+        );
+
         console.log(arr);
+        console.log(mean_arr);
+        for (let i = 0; i < lenOfWords; i++) {
+          let str = mean_arr[i];
+          let replaced_str = str.replace(",", "");
+
+          mean_arr[i] = replaced_str;
+        }
         window.onload = function () {
           for (let i = 0; i < lenOfWords; i++) {
             const temp = document.createElement("div");
             temp.className = "single-word-container";
-            temp.innerHTML = `<p class="delete-btn">x</p><p class="word">${arr[i]}</p>`;
-            console.log(wordArray);
+            temp.innerHTML = `<div class="single-container"><p class="word">${arr[i]}</p><div class="delete-btn"><div class="delete-left"></div><div class="delete-right"></div></div></div>`;
+            // console.log(temp_arr);
             word_list.append(temp);
           }
           setTimeout(function () {
             word_list.style.opacity = "100%";
           }, 1000);
         };
-
+        // showing results
         window.addEventListener("click", (e) => {
           if (e.target.classList[0] == "delete-btn") {
-            let parent = e.target.parentNode;
+            let parent = e.target.parentNode.parentNode;
+            // let word_container = e.target.parentNode;
             parent.style.opacity = "0%";
             setTimeout(function () {
               parent.remove();
             }, 300);
+          } else if (e.target.classList[0] == "word") {
+            let parent = e.target.parentNode.parentNode;
+            parent.style.backgroundColor = "#47ff14";
           }
           console.log(e.target.classList);
+        });
+        window.addEventListener("mouseover", (e) => {
+          if (e.target.classList[0] == "word") {
+            word_meaning_container.style.opacity = "0%";
+            word_meaning_container.style.display = "inline-block";
+            setTimeout(function () {
+              word_title.innerText = e.target.innerText;
+              word_meaning.innerText =
+                mean_arr[arr.indexOf(e.target.innerText)];
+            }, 300);
+            setTimeout(function () {
+              word_meaning_container.style.opacity = "100%";
+            }, 500);
+          } else {
+            word_meaning_container.style.opacity = "0%";
+            word_meaning_container.style.display = "none";
+            setTimeout(function () {
+              word_title.innerText = "";
+              word_meaning.innerText = "";
+            }, 300);
+          }
         });
       </script>
     </div>

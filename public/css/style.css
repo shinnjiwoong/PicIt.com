@@ -8,7 +8,8 @@
 
 body{
     font-family: 'Noto Sans KR';
-    background-color: rgb(250, 250, 250)
+    background-color: rgb(250, 250, 250);
+    overflow-x : hidden;
 
 }
 
@@ -18,73 +19,75 @@ body{
     position: fixed;
     z-index: 100;
     display: flex;
-    justify-content:start;
+    justify-content:space-between;
     width: 100%;
-    height: 20%;
+    height: 10%;
 
 }
 .title{
-    position: absolute;
-    /* border: solid 1px rgb(25, 25, 25); */
-    /* border-radius: 50%; */
+    font-family: "Helvetica";
+    /* position: absolute; */
+    border: solid 2px rgb(25, 25, 25);
+    border-radius: 30px;
     /* background-color: rgb(20, 38, 243); */
-    top: 0rem;
-    font-size: 8rem;
+    /* top: 0rem; */
+    font-size: 2rem;
     font-weight: lighter;
-    color: rgb(20, 38, 243);
-    /* margin: auto; */
-    /* padding: 0.5rem; */
+    color: rgb(25, 25, 25);
+    margin: 1rem;
+    padding: 0.5rem;
     /* text-decoration: underline 0.1rem rgb(25, 25, 25); */
 }
 .title-container i{
+    display: none;
     /* position: absolute; */
     font-size: 2rem;
-    color: rgb(20, 38, 243);
+    color: rgb(25, 25, 25);
 
 }
 .form-container{
     position: absolute;
     /* width: 100%; */
     /* background-color: rgb(250, 250, 250); */
-    top: 21rem;
+    top: 25rem;
     margin-top: 2rem;
     left: 1rem;
     padding-right: 10rem;
     padding-bottom: 10rem;
 }
 .home-container{
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    padding-left: 1rem;
+    /* position: absolute; */
+    margin: 1rem;
+    /* top: 0rem; */
+    /* left: 10rem; */
     display: inline-block;
 }
 .home-btn{
-    font-size: 1rem;
+    font-family: "Helvetica";
+    font-size: 2rem;
     font-weight: lighter;
-    border: solid 1px rgb(25, 25, 25);
-    border-radius: 50%;
-    background-color: none;
-    padding: 1rem;
+    border: solid 2px rgb(25, 25, 25);
+    border-radius: 30px;
+    background-color: rgb(250, 250, 250);
+    padding: 0.5rem;
     transition: all 0.1s ease-in-out;
 }
 .home-btn:hover{
-    background-color: rgb(20, 38, 243);
-    color: rgb(25, 25, 25);
+    background-color: #47ff14;
+    color: rgb(250, 250, 250);
 }
 .upload-img{
+    font-family: "Helvetica";
     border: none;
-    color: rgb(20, 38, 243);
+    color: rgb(25, 25, 25);
     font-size: 1.5rem;
     font-weight: lighter;
     /* background-color: rgb(250, 250, 250); */
     padding-right: 0rem;
 }
 .submit-btn{
-    border: 1px solid rgb(25, 25, 25);
-    border-radius: 50%;
+    border: 2px solid rgb(25, 25, 25);
+    border-radius: 30px;
     background-color: rgb(250, 250, 250);
     padding: 1rem;
     font-size: 1.5rem;
@@ -94,9 +97,9 @@ body{
 }
 
 .submit-btn:hover{
-    border: none;
-    background-color: rgb(20, 38, 243);
-    color: rgb(250, 250, 250);
+    /* border: none; */
+    background-color: #47ff14;
+    color: rgb(25, 25, 25);
 
 }
 .main-content-container{
@@ -118,27 +121,17 @@ body{
     /* background-color: rgb(200, 200, 200); */
     /* margin-top: 1rem; */
     padding: 1rem;
-    color: rgb(20, 38, 243);
+    color: rgb(25, 25, 25);
 }
 .result-container{
     /* display: flex; */
     line-break: auto;
 }
-.word{
-    /* width: 5rem;
-    height: 5rem; */
-    /* margin: 1rem; */
-    display: inline-block;
-    padding: 0.8rem;
-    font-size: 1.5rem;
-    font-weight: lighter;
-    background-color: rgb(250, 250, 250);
-    /* border-radius: 50%; */
-    transition: all 0.1s ease-in-out;
-}
+
 
 /* Footer */
 .footer-container{
+    font-family: "Helvetica";
     position: fixed;
     width: 100vw;
     padding-top: 0.5rem;
@@ -161,66 +154,171 @@ body{
     height: 100vh;
     transition: all 0.4s ease-in-out;
     opacity: 0%;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
     /* border: solid 0.1rem rgb(25, 25, 25); */
 }
 .single-word-container{
     cursor: grab;
     display: inline-block;
-    /* border: solid 0.1rem rgb(25, 25, 25); */
-    margin-left: 1rem;
-    margin-top: 2rem;
+    /* width: 10%;
+    height: 5%; */
+    margin: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px rgba(101, 100, 100, 0.599);
+    border-radius: 30px;
+    background-color: rgb(250, 250, 250);
     transition: all 0.1s ease-in-out;
 
 }
-.delete-btn{
-    cursor: grab;
-    position: absolute;
-    border: 1px solid rgb(25, 25, 25);
-    border-radius: 50%;
-    background-color: rgb(250, 250, 250);
-    /* top: 0%; */
-    font-size: 2rem;
-    font-weight: lighter;
-    transition: all 0.1s ease-in-out;
+.single-word-container:hover{
+    transform: rotate(10deg);
+}
+.single-container{
+    display: flex;
+    justify-items: center;
+}
+.word{
+    font-family: 'Helvetica';
+    /* width: 5rem;
+    height: 5rem; */
+    margin: auto;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-    opacity: 0%;
-    transform: translate(-50%, -50%);
+    display: inline-block;
+    /* padding: 0.8rem; */
+    font-size: 2rem;
+    font-weight: normal;
+    /* background-color: rgb(250, 250, 250); */
+    /* border-radius: 50%; */
+    transition: all 0.1s ease-in-out;
 }
-.single-word-container:hover .delete-btn{
+.delete-btn{
+    /* font-family: 'Helvetica'; */
+    /* cursor: grab; */
+    margin: auto;
+    /* position: absolute; */
+    /* left: 15rem; */
+    /* background-color: rgb(250, 250, 250); */
+    color: rgb(25, 25, 25);
+    /* top: 0%; */
+    /* font-size: 2rem; */
+    /* font-weight:lighter; */
+    transition: all 0.1s ease-in-out;
+    /* padding-left: 0.5rem;
+    padding-right: 0.5rem; */
     opacity: 100%;
+    padding-right: 0.5rem;
+    /* margin-left: 1rem; */
 }
-.delete-btn:hover{
+.delete-left, .delete-right{
+    background-color: rgb(25, 25, 25);
+    width: 20px;
+    height: 1px;
+}
+.delete-left{
+    transform: rotate(-45deg);
+}
+.delete-right{
+    transform: rotate(45deg);
+}
+.meaning-delete-btn{
+    /* font-family: 'Helvetica'; */
+    /* cursor: grab; */
+    margin: auto;
+    position: absolute;
+    top: 0rem;
+    right: 1rem;
+    /* left: 15rem; */
+    /* background-color: rgb(250, 250, 250); */
+    color: rgb(25, 25, 25);
+    /* top: 0%; */
+    /* font-size: 2rem; */
+    /* font-weight:lighter; */
+    transition: all 0.1s ease-in-out;
+    /* padding-left: 0.5rem;
+    padding-right: 0.5rem; */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    opacity: 100%;
+    padding-right: 0.5rem;
+    /* margin-left: 1rem; */
+}
+.meaning-delete-btn:hover .meaning-delete-left{
+    transform: rotate(-45deg);
+}
+.meaning-delete-btn:hover .meaning-delete-right{
+    transform: rotate(45deg);
+}
+.meaning-delete-left, .meaning-delete-right{
+    background-color: rgb(25, 25, 25);
+    width: 30px;
+    height: 1px;
+    transition: all 0.1s ease-in-out;
+}
+
+.word-meaning-container{
+    transition: all 0.2s ease-in-out;
+    position: fixed;
+    display: inline-block;
+    background-color: rgb(250, 250, 250);
+    border: solid 0.1rem rgb(25, 25, 25);
+    border-radius: 30px;
+    /* right: -100%; */
+    top: 20rem;
+    width: 20rem;
+    opacity: 0%;
+    /* height: 30vh; */
+    left: 50%;
+    transform: translateX(-50%);
+}
+.word-meaning-title{
+    text-decoration: underline 1px rgb(25, 25, 25);
+    font-family: 'Helvetica';
+    font-size: 2rem;
+    font-weight: lighter;
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+.word-meaning{
+    font-family: 'Noto Sans KR';
+    font-size: 1rem;
+    font-weight: lighter;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+}
+/* .delete-btn:hover{
     opacity: 100%;
     background-color: rgb(20, 38, 243);
     color: rgb(250, 250, 250);
-}
-.delete-btn:hover .single-word-container{
-    opacity: 30%;
-}
+} */
 
 /* Project Description */
 .project-desc-container{
-    background-color: rgb(20, 38, 243);
+    background-color: #ff5714;
+    border-radius: 30px;
     position: absolute;
     top: 10rem;
     width: 50vw;
-    height: 100vh;
+    height: 50%;
     right: 0rem;
     padding-right: 1rem;
     padding-left: 1rem;
 }
 .project-desc-title{
-    color: rgb(250, 250, 250);
-    font-size: 3.5rem;
+    color: rgb(25, 25, 25);
+    font-size: 2rem;
     font-weight: normal;
-    padding-top: 2rem;
+    padding: 3rem;
 }
 .about-project{
-    padding-top: 2rem;
+    padding: 3rem;
     font-size: 1.3rem;
     font-weight: lighter;
-    color: rgb(250, 250, 250);
+    color: rgb(25, 25, 25);
 }
 .usage-container{
     position: absolute;
