@@ -17,7 +17,9 @@
   </head>
   <body>
     <div class="title-container">
-      <div class="icon-container"><i class="fa-solid fa-certificate"></i></div>
+      <div class="icon-container">
+        <i class="fa-solid fa-certificate"></i>
+      </div>
       <h1 class="title">RESULT</h1>
       <form action="/" method="get" class="home-container">
         <button type="submit" class="home-btn">HOME</button>
@@ -25,13 +27,16 @@
     </div>
     <div class="main-content-container">
       <div class="result-container">
-        <p class="description">분석결과 :</p>
-        <p class="description"><%=words_len%></p>
-        <p class="description">개의 단어가 발견되었습니다!</p>
+        <div class="result-status-container">
+          <p class="description">분석결과 : 총</p>
+          <p class="word-found"></p>
+          <p class="description">개의 단어가 발견되었습니다!</p>
+        </div>
+
         <br />
-        <p class="description">
+        <!-- <p class="description">
           아래의 단어들 중 이미 아는 단어를 클릭해서 없애주세요!
-        </p>
+        </p> -->
         <br />
         <div class="word-container"></div>
         <div class="word-meaning-container">
@@ -70,13 +75,13 @@
         const word_title = document.querySelector(".word-meaning-title");
         const word_meaning = document.querySelector(".word-meaning");
         const result_container = document.querySelector(".result-container");
-
+        const word_found = document.querySelector(".word-found");
         const word_meaning_container = document.querySelector(
           ".word-meaning-container"
         );
 
-        console.log(arr);
-        console.log(mean_arr);
+        // console.log(arr);
+        // console.log(mean_arr);
         // filtering words
         for (let i = 0; i < lenOfWords; i++) {
           let str = mean_arr[i];
@@ -97,11 +102,11 @@
           final_arr.push(arr[i]);
           final_meaning.push(mean_arr[i]);
         }
-        let word_num = result_container.childNodes;
+        let word_num = result_container.children;
         let show_words_len = final_arr.length;
         window.onload = function () {
           // console.log(word_num);
-          word_num[3].innerText = show_words_len;
+          word_found.innerText = show_words_len;
           for (let i = 0; i < show_words_len; i++) {
             const temp = document.createElement("div");
             temp.className = "single-word-container";
@@ -114,19 +119,33 @@
           }, 1000);
         };
         // showing results
+        let show_picked_flag = false;
         window.addEventListener("click", (e) => {
           if (e.target.classList[0] == "delete-btn") {
             let parent = e.target.parentNode.parentNode;
             show_words_len = show_words_len - 1;
             // let word_container = e.target.parentNode;
             parent.style.opacity = "0%";
-            word_num[3].innerText = show_words_len;
+            word_found.innerText = show_words_len;
             setTimeout(function () {
               parent.remove();
             }, 300);
           } else if (e.target.classList[0] == "word") {
+            show_picked_flag = true;
+            // if show_flag == true => do something!
             let parent = e.target.parentNode.parentNode;
-            parent.style.backgroundColor = "#47ff14";
+            e.target.classList.add("clicked");
+            console.log(word_list.childNodes);
+            parent.style.backgroundColor = "rgb(182, 255, 3)";
+            let count_word = 0;
+            word_list.childNodes.forEach((node) => {
+              let word_clicked = node.childNodes[0].childNodes[0];
+              // console.log(word_clicked.classList);
+              if (word_clicked.classList.contains("clicked") == true) {
+                count_word++;
+                console.log(count_word);
+              }
+            });
           }
           console.log(e.target.classList);
         });

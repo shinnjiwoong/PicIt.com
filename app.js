@@ -3,6 +3,7 @@ const express = require('express');
 const multer = require("multer");
 const tesseract = require("node-tesseract-ocr");
 const natural = require('natural');
+const fs = require("fs");
 // const axios = require("axios");
 const cheerio = require("cheerio");
 const fetch = require("node-fetch");
@@ -30,6 +31,8 @@ var tokenizer = new natural.WordTokenizer();
 
 app.set('view engine', 'ejs');
 app.use('/public', express.static('public'));
+app.use(express.static('views'));
+// app.use('/views/imgs', express.static(__dirname + '/views/imgs'));
 app.use('/views/js', express.static(__dirname + '/views/js'));
 
 const config = {

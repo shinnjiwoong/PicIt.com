@@ -8,35 +8,96 @@
     <title>PicIt!</title>
   </head>
   <body>
-    <div class="title-container">
-      <div class="icon-container"><i class="fa-solid fa-certificate"></i></div><h1 class="title">PICIT</h1>
+    <div class="main_screen-container">
+      <div class="title-container">
+        <div class="icon-container"><i class="fa-solid fa-certificate"></i></div><h1 class="title">PICIT</h1>
+        <div class="sub-titles-container">
+          <p class="sub-titles">upload</p>
+          <p class="sub-titles">capture</p>
+          <p class="sub-titles">have fun!</p>
+        </div>
+      </div>
+      <div class="usage-container">
+        <p class="slogan">Upload, Analyze and Having fun!</p><br>
+        <p class="how-to-use">1. Upload a picture from your local library.</p><br>
+        <p class="how-to-use">2. It will show the words analized on the scree.</p><br>
+        <p class="how-to-use">3. Delete the words that you alreay know.</p><br>
+        <p class="how-to-use">4. Save the words for later study!</p><br>
+      </div>
+      <form
+        action="/result"
+        method="POST"
+        enctype="multipart/form-data"
+        class="form-container"
+      >
+        <input type="file" name="image" class="upload-img" />
+        <button type="submit" class="submit-btn" onclick="hideScreen()"><i class="fa-solid fa-arrow-up-from-bracket"></i></button>
+      </form>
+      <div class="project-desc-container">
+        <p class="project-desc-title">찍고, 올리고, 공부하세요!</p>
+        <p class="about-project">PicIt!은 OCR과 NLP분석을 활용한 단어 공부를 도와주는 웹사이트입니다. 영어로 되어있는 문서의 단어들을 공부하고 싶을 때 그저 사진을 찍어서 이곳에 올려주세요! PicIt!은 사진안에 있는 단어들을 발견하고 보여드릴 거에요. </p>
+      </div>
+        <div class="footer-container">
+          <marquee class="footer" behavior="scroll">
+            Developed by Jiwoong Shinn, Sungwon Yuk. As a part of the graduation project @SEOULTECH.
+          </marquee>
+        </div>
+      </div>
     </div>
-    <div class="usage-container">
-      <p class="how-to-use">HOW TO USE:</p><br>
-      <p class="how-to-use">1. Upload a picture from your local library.</p><br>
-      <p class="how-to-use">2. It will show the words analized on the scree.</p><br>
-      <p class="how-to-use">3. Delete the words that you alreay know.</p><br>
-      <p class="how-to-use">4. Save the words for later study!</p><br>
-    </div>
-    <form
-      action="/result"
-      method="POST"
-      enctype="multipart/form-data"
-      class="form-container"
-    >
-      <input type="file" name="image" class="upload-img" />
-      <button type="submit" class="submit-btn">업로드</button>
-    </form>
-    <div class="project-desc-container">
-      <p class="project-desc-title">찍고, 올리고, 공부하세요!</p>
-      <p class="about-project">PicIt!은 OCR과 NLP분석을 활용한 단어 공부를 도와주는 웹사이트입니다. 영어로 되어있는 문서의 단어들을 공부하고 싶을 때 그저 사진을 찍어서 이곳에 올려주세요! PicIt!은 사진안에 있는 단어들을 발견하고 보여드릴 거에요. </p>
-    </div>
-      <div class="footer-container">
-        <marquee class="footer" behavior="scroll">
-          Developed by Jiwoong Shinn, Sungwon Yuk. As a part of the graduation project @SEOULTECH.
-        </marquee>
+    <div class="loading-screen-container">
+      <div class="loading-symbol-container">
+        <img src="imgs/picit_loading_graphic.png" class="loading-symb" alt="">
+        <p class="loading-text">Processing is on the way...</p>
       </div>
     </div>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+      const sub_title_container = document.querySelector('.sub-titles-container')
+      console.log(sub_title_container.children)
+      const sub_titles = sub_title_container.children;
+      const loading_symb = document.querySelector(".loading-symb");
+      const mainScreen = document.querySelector(".main-screen-container");
+      const loadingScreen = document.querySelector(".loading-screen-container")
+      // function hideScreen(){
+      //   console.log("clicked!")
+      //   mainScreen.style.opacity = "0%"
+      //   setTimeout(function(){
+      //     loadingScreen.style.opacity = "100%"
+      //     mainScreen.style.display = "none"
+      //     loadingScreen.display = "auto";
+      //   }, 500)
+        
+      // }
+      window.onload = function(){
+        let i = 0
+        setInterval(()=>{
+          if(i ==2){
+            i = 0
+            sub_titles[i].style.fontSize = "1.2rem";
+            sub_titles[i].style.opacity = "100%";
+            sub_titles[i+1].style.fontSize = "0.7rem";
+            sub_titles[i+1].style.opacity = "50%";
+            sub_titles[i+2].style.fontSize = "0.7rem";
+            sub_titles[i+2].style.opacity = "50%";
+          }else if(i == 0){
+            i++;
+            sub_titles[i].style.fontSize = "1.2rem";
+            sub_titles[i].style.opacity = "100%";
+            sub_titles[i+1].style.fontSize = "0.7rem";
+            sub_titles[i+1].style.opacity = "50%";
+            sub_titles[i-1].style.fontSize = "0.7rem";
+            sub_titles[i-1].style.opacity = "50%";
+          }else if(i==1){
+            i++;
+            sub_titles[i].style.fontSize = "1.2rem";
+            sub_titles[i].style.opacity = "100%";
+            sub_titles[i-2].style.fontSize = "0.7rem";
+            sub_titles[i-2].style.opacity = "50%";
+            sub_titles[i-1].style.fontSize = "0.7rem";
+            sub_titles[i-1].style.opacity = "50%";
+          }
+        }, 2000)
+      }
+    </script>
   </body>
 </html>

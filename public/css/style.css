@@ -8,13 +8,15 @@
 
 body{
     font-family: 'Noto Sans KR';
-    background-color: rgb(247, 227, 198);
+    background-color: rgb(243, 232, 215);
     overflow-x : hidden;
 
 }
-
+.main-screen-container{
+    transition: all 0.2s cubic-bezier(.76,-0.01,.23,1);
+}
 .title-container{
-    background-color: rgb(247, 227, 198);
+    background-color: rgb(243, 232, 215);
     border-bottom: solid 0.1rem rgb(25, 25, 25);
     position: fixed;
     z-index: 100;
@@ -47,7 +49,7 @@ body{
     margin-top: 1.3rem;
     margin-left: 1rem;
     /* font-weight: lighter; */
-    color: rgb(255, 39, 23);
+    color: rgb(255, 39, 39);
     /* transform: rotate(360deg); */
     animation: rotate_image 4s linear infinite;
     transform-origin: 50% 50%;
@@ -57,6 +59,18 @@ body{
     100% {
         transform: rotate(360deg);
     }
+}
+.sub-titles-container{
+    margin-left: 1rem;
+
+}
+.sub-titles{
+    font-family: "Helvetica";
+    font-size: 0.7rem;
+    font-weight: lighter;
+    margin-top: 0.5rem;
+    color: rgb(25, 25, 25);
+    transition: all 0.2s cubic-bezier(.76,-0.01,.23,1);
 }
 .form-container{
     position: absolute;
@@ -77,7 +91,7 @@ body{
 }
 .home-btn{
     font-family: "Helvetica";
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: lighter;
     border: solid 2px rgb(25, 25, 25);
     border-radius: 30px;
@@ -86,8 +100,8 @@ body{
     transition: all 0.1s cubic-bezier(.16,.41,.83,.49);
 }
 .home-btn:hover{
-    background-color: #47ff14;
-    color: rrgb(247, 227, 198);
+    background-color: rgb(182, 255, 3);
+    color: rgb(25, 25, 25);
 }
 .upload-img{
     font-family: "Helvetica";
@@ -99,33 +113,43 @@ body{
     padding-right: 0rem;
 }
 .submit-btn{
-    border: 2px solid rgb(25, 25, 25);
-    border-radius: 30px;
-    background-color: rgb(247, 227, 198);
-    padding: 1rem;
-    font-size: 1.5rem;
-    font-weight: lighter;
+    background-color: rgb(243, 232, 215);
+    border: none;
     margin-left: 0;
     transition: all 0.1s cubic-bezier(.16,.41,.83,.49);
 }
 
-.submit-btn:hover{
+.submit-btn:hover .fa-arrow-up-from-bracket{
     /* border: none; */
     background-color: rgb(25, 25, 25);
-    color: rgb(247, 227, 198);
+    color: rgb(182, 255, 3);
 
 }
+.submit-btn i{
+    border: 2px solid rgb(25, 25, 25);
+    border-radius: 30px;
+    padding: 1rem;
+    font-size: 2rem;
+    /* font-weight: lighter; */
+    padding: 1rem 3rem;
+    color: rgb(25, 25, 25);
+    transition: all 0.1s cubic-bezier(.16,.41,.83,.49);
+}
+
 .main-content-container{
     width: 100vw;
     height: 150%;
     position: absolute;
     top: 0rem;
-    padding-top: 10rem;
+    padding-top: 7rem;
 }
 .fake-container{
 
     width: 100vw;
     height: 30vh;
+}
+.result-status-container{
+    border-bottom: solid 2px rgb(25, 25, 25);
 }
 .description{
     display: inline-block;
@@ -133,8 +157,24 @@ body{
     font-size: 1.2rem;
     /* background-color: rgb(200, 200, 200); */
     /* margin-top: 1rem; */
-    padding: 1rem;
+    padding: 0.2rem;
     color: rgb(25, 25, 25);
+}
+.word-found{
+    font-family: "Helvetica";
+    display: inline-block;
+    /* padding-left: 1rem; */
+    /* padding-right: 1rem; */
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    font-size: 2rem;
+    font-weight: lighter;
+    color: rgb(255, 39, 39);
+    text-decoration: underline 1px rgb(255, 39, 39);
+    /* border: solid 2px rgba(101, 100, 100, 0.599);
+    border-radius: 30px;
+    background-color: rgb(250, 250, 250); */
+    transition: all 0.01s cubic-bezier(.16,.41,.83,.49);
 }
 .result-container{
     /* display: flex; */
@@ -155,10 +195,10 @@ body{
     border-top: solid 0.1rem rgb(25, 25, 25);
     font-weight: lighter;
     /* padding-bottom: 1rem; */
-    background-color: rgb(247, 227, 198);
+    background-color: rgb(243, 232, 215);
 }
 .footer{
-    color: rgb(25, 25, 25);
+    color: rgb(255, 39, 39);
 }
 /* Single word styling */
 .word-container{
@@ -188,7 +228,7 @@ body{
 }
 .single-word-container:hover{
     transform: rotate(10deg);
-    filter: drop-shadow(0 0 0.45rem rgb(25, 25, 25));
+    filter: drop-shadow(0 0 0.25rem rgb(25, 25, 25));
 }
 .single-container{
     display: flex;
@@ -226,10 +266,11 @@ body{
     /* padding-left: 0.5rem;
     padding-right: 0.5rem; */
     opacity: 100%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     padding-right: 0.5rem;
     /* margin-left: 1rem; */
 }
-
 .delete-left, .delete-right{
     background-color: rgb(25, 25, 25);
     width: 20px;
@@ -316,7 +357,7 @@ body{
 /* Project Description */
 .project-desc-container{
     opacity: 0%;
-    background-color: #47ff14;
+    background-color: rgb(182, 255, 3);
     border-radius: 30px;
     position: absolute;
     top: 10rem;
@@ -341,15 +382,52 @@ body{
 .usage-container{
     position: absolute;
     padding-top: 2rem;
-    top: 10rem;
+    top: 5rem;
     left: 1rem;
     width: 50vw;
     color: rgb(25, 25, 25);
     /* background-color: rgb(250, 250, 250); */
 }
-.how-to-use{
-    
-    font-size: 1rem;
+.slogan{
+    font-family: "Helvetica";
+    font-size: 2.5rem;
     font-weight: lighter;
     color: rgb(25, 25, 25);
+}
+.how-to-use{
+    font-family: "Helvetica";
+    font-size: 1.5rem;
+    font-weight: lighter;
+    color: rgb(25, 25, 25);
+}
+
+/* loading screen design */
+.loading-screen-container{
+    transition: all 0.1s cubic-bezier(.16,.41,.83,.49);
+    opacity: 0%;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(243, 232, 215);
+    z-index: -1000;
+}
+.loading-symbol-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+.loading-symb{
+    transition: all 0.1s cubic-bezier(.16,.41,.83,.49);
+    width: 2rem;
+    height: 2rem;
+    animation: rotate_image 2s cubic-bezier(.16,.41,.83,.49) infinite;
+    transform-origin: 50% 50%;
+}
+.loading-text{
+    font-family: "Helvetica";
+    font-weight: lighter;
+    font-size: 1.5rem;
+    color:rgb(255, 39, 39)
 }
