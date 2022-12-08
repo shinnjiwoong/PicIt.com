@@ -17,7 +17,8 @@
   </head>
   <body>
     <div class="title-container">
-      <h1 class="title">RESULT<i class="fa-solid fa-camera"></i></h1>
+      <div class="icon-container"><i class="fa-solid fa-certificate"></i></div>
+      <h1 class="title">RESULT</h1>
       <form action="/" method="get" class="home-container">
         <button type="submit" class="home-btn">HOME</button>
       </form>
@@ -35,10 +36,10 @@
         <div class="word-container"></div>
         <div class="word-meaning-container">
           <div class="word-meaning-title"></div>
-          <div class="meaning-delete-btn">
+          <!-- <div class="meaning-delete-btn">
             <div class="meaning-delete-left"></div>
             <div class="meaning-delete-right"></div>
-          </div>
+          </div> -->
           <p class="word-meaning"></p>
         </div>
       </div>
@@ -49,34 +50,62 @@
           project @SEOULTECH.
         </marquee>
       </div>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      />
       <script>
         let wordArray = `<%-title%>`;
         let wordMeaning = `<%-meaning%>`;
         let arr = wordArray.split(",");
+        let final_arr = [];
+        let final_meaning = [];
         let lenOfWords = arr.length;
         let mean_arr = wordMeaning.split("|SPLIT|");
         const regex_number = new RegExp(/[1-9]*/);
-        console.log(regex_number.test("245"));
         const word_list = document.querySelector(".word-container");
         const word_title = document.querySelector(".word-meaning-title");
         const word_meaning = document.querySelector(".word-meaning");
+        const result_container = document.querySelector(".result-container");
+
         const word_meaning_container = document.querySelector(
           ".word-meaning-container"
         );
 
         console.log(arr);
         console.log(mean_arr);
+        // filtering words
         for (let i = 0; i < lenOfWords; i++) {
           let str = mean_arr[i];
           let replaced_str = str.replace(",", "");
-
           mean_arr[i] = replaced_str;
         }
+        for (let i = 0; i < lenOfWords; i++) {
+          if (mean_arr[i] == "") {
+            continue;
+          } else if (arr[i].length <= 2) {
+            continue;
+          } else if (final_arr.includes(arr[i]) == true) {
+            continue;
+          }
+          //  else if (regex_number.test(arr[i]) == true) {
+          //   continue;
+          // }
+          final_arr.push(arr[i]);
+          final_meaning.push(mean_arr[i]);
+        }
+        let word_num = result_container.childNodes;
+        let show_words_len = final_arr.length;
         window.onload = function () {
-          for (let i = 0; i < lenOfWords; i++) {
+          // console.log(word_num);
+          word_num[3].innerText = show_words_len;
+          for (let i = 0; i < show_words_len; i++) {
             const temp = document.createElement("div");
             temp.className = "single-word-container";
-            temp.innerHTML = `<div class="single-container"><p class="word">${arr[i]}</p><div class="delete-btn"><div class="delete-left"></div><div class="delete-right"></div></div></div>`;
+            temp.innerHTML = `<div class="single-container"><p class="word">${final_arr[i]}</p><div class="delete-btn"><div class="delete-left"></div><div class="delete-right"></div></div></div>`;
             // console.log(temp_arr);
             word_list.append(temp);
           }
@@ -88,8 +117,10 @@
         window.addEventListener("click", (e) => {
           if (e.target.classList[0] == "delete-btn") {
             let parent = e.target.parentNode.parentNode;
+            show_words_len = show_words_len - 1;
             // let word_container = e.target.parentNode;
             parent.style.opacity = "0%";
+            word_num[3].innerText = show_words_len;
             setTimeout(function () {
               parent.remove();
             }, 300);
@@ -103,10 +134,12 @@
           if (e.target.classList[0] == "word") {
             word_meaning_container.style.opacity = "0%";
             word_meaning_container.style.display = "inline-block";
+            word_meaning_container.style.left = `${e.pageX}px`;
+            word_meaning_container.style.top = `${e.pageY}px`;
             setTimeout(function () {
               word_title.innerText = e.target.innerText;
               word_meaning.innerText =
-                mean_arr[arr.indexOf(e.target.innerText)];
+                final_meaning[final_arr.indexOf(e.target.innerText)];
             }, 300);
             setTimeout(function () {
               word_meaning_container.style.opacity = "100%";
