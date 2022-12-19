@@ -6,12 +6,26 @@ const natural = require('natural');
 const fs = require("fs");
 // const axios = require("axios");
 const cheerio = require("cheerio");
+const nodemailer = require("nodemailer");
 const fetch = require("node-fetch");
 const parser = require("jsdom");
+const bodyParser = require('body-parser')
 const app = express()
 const port = 3000;
 
 var fileName;
+// Setting up the nodemailer.
+let transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,//port 587의 경우, secure가 false로 유지
+  //secure가 false라고 해서 암호화된 연결을 사용하지 않는다는 의미가 아닙니다.
+  auth: {
+    user: "shinnjiwoong@gmail.com",
+    pass: "nyiwlxilhfrfjfez",
+  },
+});
+
 const stopwords = ['i','me','my','myself','we','our','ours','ourselves','you','your','yours','yourself','yourselves','he','him','his','himself','she','her','hers','herself','it','its','itself','they','them','their','theirs','themselves','what','which','who','whom','this','that','these','those','am','is','are','was','were','be','been','being','have','has','had','having','do','does','did','doing','a','an','the','and','but','if','or','because','as','until','while','of','at','by','for','with','about','against','between','into','through','during','before','after','above','below','to','from','up','down','in','out','on','off','over','under','again','further','then','once','here','there','when','where','why','how','all','any','both','each','few','more','most','other','some','such','no','nor','not','only','own','same','so','than','too','very','s','t','can','will','just','don','should','now', 'also'];
 const alphabets = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
@@ -34,6 +48,10 @@ app.use('/public', express.static('public'));
 app.use(express.static('views'));
 // app.use('/views/imgs', express.static(__dirname + '/views/imgs'));
 app.use('/views/js', express.static(__dirname + '/views/js'));
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+// app.use(bodyParser.json());
+
 
 const config = {
   lang: "eng",
@@ -119,6 +137,22 @@ app.post('/result', upload.single('image'), async (req, res, next) => {
   console.log(final_words);
   res.render('result', {title: word_titles, words_len: len, meaning: meanings});
 });
+app.post('/share', function(req, res){
+  const email = req.body.email;
+  const word = req.body.word;
+  const emailOptions = { // 옵션값 설정
+    from: 'shinnjiwoong@gmail.com',
+    to: email,
+    subject: '당신이 pick한 오늘의 단어들, from PICIT!',
+    html: 
+    "<h1 >PICIT에서 선택하신 단어를 보내드립니다!</h1> <h2> 단어 : <br>" + word + "</h2>"	
+    ,
+  };
+  transporter.sendMail(emailOptions, res);
+  console.log(word);
+  res.render('share')
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

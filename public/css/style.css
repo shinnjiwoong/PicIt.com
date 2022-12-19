@@ -1,44 +1,60 @@
-
+@font-face {
+    font-family: 'BMDOHYEON';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMDOHYEON.woff') format('woff');
+    font-weight: lighter;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DungGeunMo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Noto Sans KR';
 }
-
+*::selection{
+    background-color: #00ff2d;
+}
 body{
     font-family: 'Noto Sans KR';
-    background-color: rgb(243, 232, 215);
+    background-color: rgb(250, 250, 250);
     overflow-x : hidden;
 
 }
 .main-screen-container{
     transition: all 0.2s cubic-bezier(.76,-0.01,.23,1);
 }
+.main-title-box{
+    margin-left: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: solid 1px rgb(25, 25, 25);
+}
 .title-container{
-    background-color: rgb(243, 232, 215);
+    background-color: rgb(250, 250, 250);
     border-bottom: solid 0.1rem rgb(25, 25, 25);
     position: fixed;
     z-index: 100;
     display: flex;
-    /* justify-content:space-around; */
+    justify-content:space-between;
     width: 100%;
     height: 10%;
 
 }
 .title{
-    font-family: "Helvetica";
-    /* position: absolute; */
-    border-right: solid 1px rgb(25, 25, 25);
-    
-    /* border-radius: 30px; */
-    /* background-color: rgb(20, 38, 243); */
-    /* top: 0rem; */
+    font-family: "DungGeunMo";
+    /* border-right: solid 1px rgb(25, 25, 25); */
     font-size: 3rem;
     font-weight: lighter;
     color: rgb(25, 25, 25);
-    margin-top: 0.5rem;
-    padding: 0.5rem;
+    /* margin-top: 0.5rem; */
+    margin:0rem 1rem;
+    /* padding: 0.5rem; */
     /* text-decoration: underline 0.1rem rgb(25, 25, 25); */
 }
 .title-container i{
@@ -46,12 +62,12 @@ body{
     /* margin-top: 1.4rem; */
     /* position: absolute; */
     font-size: 2.5rem;
-    margin-top: 1.3rem;
-    margin-left: 1rem;
+    /* margin-top: 1.3rem; */
+    /* margin-left: 1rem; */
     /* font-weight: lighter; */
-    color: rgb(255, 39, 39);
+    color: #00ff2d;
     /* transform: rotate(360deg); */
-    animation: rotate_image 4s linear infinite;
+    animation: rotate_image 2s cubic-bezier(.76,-0.01,.23,1) infinite;
     transform-origin: 50% 50%;
 }
 
@@ -61,22 +77,29 @@ body{
     }
 }
 .sub-titles-container{
-    margin-left: 1rem;
+    display: flex;
+    margin-left: 42rem;
+    /* right: 0; */
 
 }
 .sub-titles{
-    font-family: "Helvetica";
-    font-size: 0.7rem;
+    font-family: "DungGeunMo";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
     font-weight: lighter;
-    margin-top: 0.5rem;
+    /* margin-top: 0.5rem; */
     color: rgb(25, 25, 25);
     transition: all 0.2s cubic-bezier(.76,-0.01,.23,1);
 }
 .form-container{
-    position: absolute;
+    /* position: absolute; */
     /* width: 100%; */
     /* background-color: rgb(250, 250, 250); */
-    top: 25rem;
+    top: 15rem;
     margin-top: 2rem;
     left: 1rem;
     padding-right: 10rem;
@@ -84,13 +107,13 @@ body{
 }
 .home-container{
     /* position: absolute; */
-    margin: 1rem;
+    margin: 1.3rem;
     /* top: 0rem; */
     /* left: 10rem; */
     display: inline-block;
 }
 .home-btn{
-    font-family: "Helvetica";
+    font-family: "DungGeunMo";
     font-size: 1.5rem;
     font-weight: lighter;
     border: solid 2px rgb(25, 25, 25);
@@ -100,11 +123,11 @@ body{
     transition: all 0.1s cubic-bezier(.16,.41,.83,.49);
 }
 .home-btn:hover{
-    background-color: rgb(182, 255, 3);
+    background-color: #00ff2d;
     color: rgb(25, 25, 25);
 }
 .upload-img{
-    font-family: "Helvetica";
+    font-family: "DungGeunMo";
     border: none;
     color: rgb(25, 25, 25);
     font-size: 1.5rem;
@@ -113,7 +136,7 @@ body{
     padding-right: 0rem;
 }
 .submit-btn{
-    background-color: rgb(243, 232, 215);
+    background-color: rgb(250, 250, 250);
     border: none;
     margin-left: 0;
     transition: all 0.1s cubic-bezier(.16,.41,.83,.49);
@@ -121,37 +144,101 @@ body{
 
 .submit-btn:hover .fa-arrow-up-from-bracket{
     /* border: none; */
-    background-color: rgb(25, 25, 25);
-    color: rgb(182, 255, 3);
+    background-color: #00ff2d;
+    color: rgb(25, 25, 25);
 
 }
 .submit-btn i{
-    border: 2px solid rgb(25, 25, 25);
+    border: 1.3px solid rgb(25, 25, 25);
     border-radius: 30px;
     padding: 1rem;
     font-size: 2rem;
     /* font-weight: lighter; */
-    padding: 1rem 3rem;
+    padding: 1rem 1.5rem;
     color: rgb(25, 25, 25);
     transition: all 0.1s cubic-bezier(.16,.41,.83,.49);
 }
 
 .main-content-container{
     width: 100vw;
-    height: 150%;
+    /* height: 10%; */
     position: absolute;
     top: 0rem;
-    padding-top: 7rem;
+    padding-top: 5rem;
 }
 .fake-container{
 
     width: 100vw;
     height: 30vh;
 }
+.status-container{
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    width: 100%;
+    border-bottom: solid 1px rgb(25, 25, 25);
+}
 .result-status-container{
-    border-bottom: solid 2px rgb(25, 25, 25);
+    /* border-bottom: solid 2px rgb(25, 25, 25); */
+    margin-left: 1rem;
+    padding: 1rem 0rem;
+}
+.highlight-container{
+    opacity: 0%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    transition: all 0.1s cubic-bezier(.16,.41,.83,.49);
+    border-top: solid 1px rgb(25, 25, 25);
+    padding: 0.5rem 0rem;
+}
+.highlight-desc-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.highlight-desc{
+    font-family: "DungGeunMo";
+    font-size: 1.2rem;
+}
+.word-picked{
+    font-size: 1.2rem;
+    font-family: "DungGeunMo";
+    color: rgb(25, 25, 25);
+    text-decoration: underline 1px #00ff2d;
+}
+.select-done{
+    font-family: "DungGeunMo";
+    border: solid 2px rgb(25, 25, 25);
+    font-size: 1.2rem;
+    border-radius: 30px;
+    background-color: rgb(250, 250, 250);
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: grab;
+}
+.select-reset{
+    font-family: "DungGeunMo";
+    border: solid 2px rgb(25, 25, 25);
+    font-size: 1.2rem;
+    border-radius: 30px;
+    background-color: rgb(250, 250, 250);
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: grab;
+}
+
+.select-reset:hover{
+    background-color: #00ff2d;
+}
+.select-done:hover{
+    background-color: #00ff2d;
 }
 .description{
+    font-family: "DungGeunMo";
     display: inline-block;
     font-weight: lighter;
     font-size: 1.2rem;
@@ -161,7 +248,7 @@ body{
     color: rgb(25, 25, 25);
 }
 .word-found{
-    font-family: "Helvetica";
+    font-family: "DungGeunMo";
     display: inline-block;
     /* padding-left: 1rem; */
     /* padding-right: 1rem; */
@@ -169,8 +256,8 @@ body{
     padding-bottom: 0.3rem;
     font-size: 2rem;
     font-weight: lighter;
-    color: rgb(255, 39, 39);
-    text-decoration: underline 1px rgb(255, 39, 39);
+    color: rgb(25, 25, 25);
+    text-decoration: underline 1px #00ff2d;
     /* border: solid 2px rgba(101, 100, 100, 0.599);
     border-radius: 30px;
     background-color: rgb(250, 250, 250); */
@@ -184,7 +271,7 @@ body{
 
 /* Footer */
 .footer-container{
-    font-family: "Helvetica";
+    font-family: 'DungGeunMo';
     position: fixed;
     width: 100vw;
     padding-top: 0.5rem;
@@ -195,22 +282,28 @@ body{
     border-top: solid 0.1rem rgb(25, 25, 25);
     font-weight: lighter;
     /* padding-bottom: 1rem; */
-    background-color: rgb(243, 232, 215);
+    background-color: rgb(250, 250, 250);
 }
 .footer{
-    color: rgb(255, 39, 39);
+    font-family: 'DungGeunMo';
+    color: rgb(25, 25, 25);
 }
 /* Single word styling */
 .word-container{
     margin-left: 8rem;
     margin-right: 8rem;
-    height: 100vh;
+    /* height: 100vh; */
     transition: all 0.4s cubic-bezier(.16,.41,.83,.49);
     opacity: 0%;
     /* display: flex; */
     /* justify-content: center; */
     /* align-items: center; */
     /* border: solid 0.1rem rgb(25, 25, 25); */
+}
+.word-container-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .single-word-container{
     cursor: grab;
@@ -235,7 +328,7 @@ body{
     justify-items: center;
 }
 .word{
-    font-family: 'Helvetica';
+    font-family: "DungGeunMo";
     /* width: 5rem;
     height: 5rem; */
     margin: auto;
@@ -321,7 +414,7 @@ body{
     transition: all 0.1s cubic-bezier(.16,.41,.83,.49);
     position: absolute;
     display: inline-block;
-    background-color: rgb(250, 250, 250);
+    background-color: #dcdcdc;
     border: solid 0.1rem rgb(25, 25, 25);
     border-radius: 30px;
     /* right: -100%; */
@@ -334,14 +427,14 @@ body{
 }
 .word-meaning-title{
     text-decoration: underline 1px rgb(25, 25, 25);
-    font-family: 'Helvetica';
+    font-family: "DungGeunMo";
     font-size: 2rem;
     font-weight: lighter;
     padding-top: 1rem;
     padding-left: 1rem;
 }
 .word-meaning{
-    font-family: 'Noto Sans KR';
+    font-family: "DungGeunMo";
     font-size: 1rem;
     font-weight: lighter;
     padding-left: 1rem;
@@ -355,54 +448,118 @@ body{
 } */
 
 /* Project Description */
-.project-desc-container{
-    opacity: 0%;
-    background-color: rgb(182, 255, 3);
-    border-radius: 30px;
-    position: absolute;
-    top: 10rem;
+.main-contents-box{
+    display: flex;
+    padding-top: 6%;
+}
+.left-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 50vw;
-    height: 50%;
-    right: 0rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding: 0 2rem;
+    margin-top: 5rem;
+    border-right: solid 1px rgb(25, 25, 25);
+}
+.right-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    margin-top: 5rem;
+}
+.desc-box{
+    background-color: #dcdcdc;
+    border: solid 1.5px rgb(25, 25, 25);
+    /* border-radius: 20px; */
+    padding: 2rem 2rem;
+}
+.project-desc-container{
+    opacity: 100%;
+    
+    
+    /* border-radius: 30px; */
+    /* position: absolute; */
+    /* top: 12rem; */
+    /* width: 70%; */
+    /* height: 50%; */
+    /* right: 5rem; */
+    /* margin-left: 6rem; */
+    /* padding-left: 0.2rem; */
+}
+.how-img-container{
+    /* border: solid 1.5px rgb(25, 25, 25); */
+    /* border-radius: 20px; */
+    /* width: 30%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    /* top: 10rem; */
+    /* left: 57%; */
+    transform: translate(-50%, -40%);
+
+}
+.how-to-use-img{
+    width: 10rem;
+    height: 10rem;
+    animation: rotate_image 8s linear infinite;
+    transform-origin: 50% 50%;
+}
+.how-title-container{
+    /* margin-top: 10rem; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .project-desc-title{
+    font-family: "DungGeunMo";
     color: rgb(25, 25, 25);
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: normal;
-    padding: 3rem;
+    padding: 1rem;
+}
+.about-container{
+    margin-top: 2rem;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
 }
 .about-project{
-    padding: 3rem;
-    font-size: 1.3rem;
+    font-family: "DungGeunMo";
+    width: 100%;
+    display: block;
+    /* padding: 3rem; */
+    margin: 0.2rem 1rem;
+    font-size: 1rem;
     font-weight: lighter;
     color: rgb(25, 25, 25);
 }
 .usage-container{
-    position: absolute;
-    padding-top: 2rem;
-    top: 5rem;
+    /* position: absolute; */
+    /* padding-top: 2rem; */
+    /* top: 5rem; */
     left: 1rem;
-    width: 50vw;
+    /* width: 50vw; */
     color: rgb(25, 25, 25);
     /* background-color: rgb(250, 250, 250); */
 }
 .slogan{
-    font-family: "Helvetica";
+    font-family: "DungGeunMo";
     font-size: 2.5rem;
     font-weight: lighter;
     color: rgb(25, 25, 25);
 }
 .how-to-use{
-    font-family: "Helvetica";
-    font-size: 1.5rem;
+    font-family: "DungGeunMo";
+    font-size: 1.2rem;
     font-weight: lighter;
     color: rgb(25, 25, 25);
 }
 
 /* loading screen design */
 .loading-screen-container{
+    display: none;
     transition: all 0.1s cubic-bezier(.16,.41,.83,.49);
     opacity: 0%;
     position: absolute;
@@ -430,4 +587,78 @@ body{
     font-weight: lighter;
     font-size: 1.5rem;
     color:rgb(255, 39, 39)
+}
+
+/* final result style */
+.picked-word-container{
+    display: flex;
+    border: solid 1px rgb(25, 25, 25);
+}
+.picked-word-container:hover{
+    background-color: #dcdcdc;
+}
+.picked-word{
+    font-family: "DungGeunMo";
+    width: 10rem;
+    font-size: 1.2rem;
+    color: rgb(25, 25, 25);
+    /* border-left: solid 1px rgb(25, 25, 25); */
+    border-right: solid 1px rgb(25, 25, 25);
+    padding: 0.5rem 1rem;
+
+}
+.picked-meaning{
+    font-family: "DungGeunMo";
+    font-size: 1.2rem;
+    color: rgb(25, 25, 25);
+    padding: 0.5rem 1rem;
+}
+
+/* Sending words styles */
+
+.send-form-container{
+    padding-top: 0.3rem;
+}
+
+.email{
+    padding: 0.5rem ;
+    font-family: "DungGeunMo";
+    font-size: 1.3rem;
+    border: solid 1.5px rgb(25, 25, 25);
+}
+
+.main-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+.final-word{
+    display: block;
+    font-family: "DungGeunMo";
+    font-size: 3rem;
+    padding: 2rem 5rem;
+
+}
+.final-description{
+    display: block;
+    font-family: "DungGeunMo";
+    font-size: 1.5rem;
+    padding: 2rem 5rem;
+
+}
+.send-form-container button{
+    font-family: "DungGeunMo";
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: rgb(250, 250, 250);
+    border: solid 1.5px rgb(25, 25, 25);
+    border-radius: 30px;
+    margin-left: 0;
+    transition: all 0.1s cubic-bezier(.16,.41,.83,.49);
+}
+.send-form-container button:hover{
+    background-color: #00ff2d;
 }
