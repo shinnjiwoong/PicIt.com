@@ -1,2 +1,3 @@
-# picIt_webAppVer
- The final version for PicIt!
+# PicIt
+ ## OCR, NLP기술을 융합한 영단어 학습 웹 어플리케이션입니다.
+ ### 서울과학기술대학교 캡스톤 디자인 및 졸업작품입니다.
