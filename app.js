@@ -13,6 +13,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const port = 3000;
 
+app.listen(process.env.PORT || 8080);
 var fileName;
 // Setting up the nodemailer.
 let transporter = nodemailer.createTransport({
@@ -46,11 +47,9 @@ var tokenizer = new natural.WordTokenizer();
 app.set('view engine', 'ejs');
 app.use('/public', express.static('public'));
 app.use(express.static('views'));
-// app.use('/views/imgs', express.static(__dirname + '/views/imgs'));
 app.use('/views/js', express.static(__dirname + '/views/js'));
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-// app.use(bodyParser.json());
 
 
 const config = {
@@ -58,18 +57,6 @@ const config = {
   oem: 1,
   psm: 3,
 }
-
-// tesseract
-//   .recognize("public/img/3.png", config)
-//   .then((text) => {
-//     console.log("Result:", text)
-//   })
-//   .catch((error) => {
-//     console.log(error.message)
-//   })
-
-
-// var processedText = [];
 
 // Tokenization
 const tokens = async (img) => {
@@ -79,10 +66,6 @@ const tokens = async (img) => {
     const len = Object.keys(tokens).length;
     var stem_tokens = [];
     
-    // for(let i = 0; i<len; i++){
-    //   stem_tokens.push(natural.PorterStemmer.stem(tokens[i]));
-    //   stem_tokens[i] = stem_tokens[i].toLowerCase();
-    // }
     for(let i = 0; i<len; i++){
       stem_tokens[i] = tokens[i].toLowerCase();
       // console.log(stem_tokens[i])
@@ -96,10 +79,6 @@ const tokens = async (img) => {
   const crawled_word_meanings = await web_process(word_array);
   let final_words = ''
 
-  // for(i=0; i<len; i++){
-  //   final_words = final_words + word_array[i] + '|MEANSPLIT|'
-  //   final_words = final_words + crawled_word_meanings[i] + '|WORDSPLIT|'
-  // }
   console.log(final_words);
   return [word_array, crawled_word_meanings]
 }
@@ -125,7 +104,6 @@ const request_crawl = async (word) => {
 }
 app.get('/', (req, res, next) => {
   res.render('index');
-  // console.log(processedText);
 })
 
 app.post('/result', upload.single('image'), async (req, res, next) => {
