@@ -40,19 +40,19 @@
 ---
 
  ### 👀 Detail / 구현화면
- **메인화면**
+ **<메인화면>**
  <img width="1000" alt="PICIT-메인화면" src="https://user-images.githubusercontent.com/109443641/217186185-841a3ec8-9277-4a4c-baec-1839e6d1c626.png">
  
- **업로드**
+ **<업로드>**
  <img width="1440" alt="PICIT-업로드화면" src="https://user-images.githubusercontent.com/109443641/217186577-0c44b353-2712-48fb-bfc4-62a27dc90eb4.png">
  
- **결과화면**
+ **<결과화면>**
  <img width="1000" alt="PICIT-결과-1" src="https://user-images.githubusercontent.com/109443641/217186678-c5f1bbec-0116-471a-99fb-134874e8414e.png">
  <img width="1000" alt="PICIT-결과-2" src="https://user-images.githubusercontent.com/109443641/217186686-cd1b3a26-95f7-4b9e-82c8-8fa8790f0086.png">
  <img width="1000" alt="PICIT-결과-3" src="https://user-images.githubusercontent.com/109443641/217186689-1aef711d-e5f1-48f5-a909-18059b0143b0.png">
  <img width="1000" alt="PICIT-결과-4" src="https://user-images.githubusercontent.com/109443641/217186694-2f93aba8-6964-4c21-a30d-dde7bc6e4c87.png">
 
-**이메일 전송**
+**<이메일 전송>**
 <img width="1000" alt="PICIT-마지막화면" src="https://user-images.githubusercontent.com/109443641/217187132-6655f44c-6817-4393-af09-454d5c3f1716.png">
 <img width="1000" alt="PICIT-메일전송화면" src="https://user-images.githubusercontent.com/109443641/217187144-f43a1921-a602-459d-a73f-92b0915b67c9.png">
 
