@@ -4,7 +4,6 @@ const multer = require("multer");
 const tesseract = require("node-tesseract-ocr");
 const natural = require('natural');
 const fs = require("fs");
-// const axios = require("axios");
 const cheerio = require("cheerio");
 const nodemailer = require("nodemailer");
 const fetch = require("node-fetch");
@@ -15,18 +14,20 @@ const port = 3000;
 
 app.listen(process.env.PORT || 8080);
 var fileName;
-// Setting up the nodemailer.
+
+// Nodemailer 설정
+
 let transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 587,
-  secure: false,//port 587의 경우, secure가 false로 유지
-  //secure가 false라고 해서 암호화된 연결을 사용하지 않는다는 의미가 아닙니다.
+  secure: false,
   auth: {
     user: "shinnjiwoong@gmail.com",
-    pass: "nyiwlxilhfrfjfez",
+    pass: "n---------------", //Github 업로드를 위해 지워둠.
   },
 });
 
+// 불용어 설정
 const stopwords = ['i','me','my','myself','we','our','ours','ourselves','you','your','yours','yourself','yourselves','he','him','his','himself','she','her','hers','herself','it','its','itself','they','them','their','theirs','themselves','what','which','who','whom','this','that','these','those','am','is','are','was','were','be','been','being','have','has','had','having','do','does','did','doing','a','an','the','and','but','if','or','because','as','until','while','of','at','by','for','with','about','against','between','into','through','during','before','after','above','below','to','from','up','down','in','out','on','off','over','under','again','further','then','once','here','there','when','where','why','how','all','any','both','each','few','more','most','other','some','such','no','nor','not','only','own','same','so','than','too','very','s','t','can','will','just','don','should','now', 'also'];
 const alphabets = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
@@ -58,7 +59,7 @@ const config = {
   psm: 3,
 }
 
-// Tokenization
+// 토큰화 프로세스
 const tokens = async (img) => {
   const word_array = []
   await tesseract.recognize(img, config).then((sentence)=>{
@@ -68,7 +69,6 @@ const tokens = async (img) => {
     
     for(let i = 0; i<len; i++){
       stem_tokens[i] = tokens[i].toLowerCase();
-      // console.log(stem_tokens[i])
       if(stopwords.includes(stem_tokens[i])){
         continue;
       }
@@ -83,25 +83,27 @@ const tokens = async (img) => {
   return [word_array, crawled_word_meanings]
 }
 
+// 웹 크롤링 프로세스
+
 const web_process = async (wordlist) => {
   const resultArr = []
   for(const word of wordlist){
     const word_meaning = await request_crawl(word);
     resultArr.push(word_meaning);
   } 
-  //  console.log(resultArr); 
   return resultArr
 }
 const request_crawl = async (word) => {
   const response = await fetch(`https://dic.daum.net/search.do?q=${word}`)
   const body = await response.text();
   const $ = await cheerio.load(body);
-  // const title = $("#mArticle > div.search_cont > div:nth-child(3) > div:nth-child(2) > div > div.search_cleanword > strong > a > span").text();
   const word_meaning = await $("#mArticle > div.search_cont > div:nth-child(3) > div:nth-child(2) > div > ul").text() + "|SPLIT|";
-  // console.log(word_meaning)
 
   return word_meaning
 }
+
+// 렌더링 
+
 app.get('/', (req, res, next) => {
   res.render('index');
 })
@@ -112,13 +114,13 @@ app.post('/result', upload.single('image'), async (req, res, next) => {
   const word_titles = final_words[0]
   const meanings = final_words[1];
   const len = word_titles.length;
-  console.log(final_words);
   res.render('result', {title: word_titles, words_len: len, meaning: meanings});
 });
 app.post('/share', function(req, res){
   const email = req.body.email;
   const word = req.body.word;
-  const emailOptions = { // 옵션값 설정
+  const emailOptions = { 
+    // 옵션값 설정
     from: 'shinnjiwoong@gmail.com',
     to: email,
     subject: '당신이 pick한 오늘의 단어들, from PICIT!',
@@ -127,7 +129,6 @@ app.post('/share', function(req, res){
     ,
   };
   transporter.sendMail(emailOptions, res);
-  console.log(word);
   res.render('share')
 });
 

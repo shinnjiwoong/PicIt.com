@@ -82,47 +82,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script>
       const sub_title_container = document.querySelector('.sub-titles-container')
-      console.log(sub_title_container.children)
       const sub_titles = sub_title_container.children;
       const loading_symb = document.querySelector(".loading-symb");
       const mainScreen = document.querySelector(".main-screen-container");
       const loadingScreen = document.querySelector(".loading-screen-container")
-      // function hideScreen(){
-      //   console.log("clicked!")
-      //   mainScreen.style.opacity = "0%"
-      //   setTimeout(function(){
-      //     loadingScreen.style.opacity = "100%"
-      //     mainScreen.style.display = "none"
-      //     loadingScreen.display = "auto";
-      //   }, 500)
-        
-      // }
+
       window.onload = function(){
         let i = 0
         setInterval(()=>{
           if(i ==2){
             i = 0
-            // sub_titles[i].style.fontSize = "1.2rem";
             sub_titles[i].style.opacity = "100%";
-            // sub_titles[i+1].style.fontSize = "0.7rem";
             sub_titles[i+1].style.opacity = "20%";
-            // sub_titles[i+2].style.fontSize = "0.7rem";
             sub_titles[i+2].style.opacity = "20%";
           }else if(i == 0){
             i++;
-            // sub_titles[i].style.fontSize = "1.2rem";
             sub_titles[i].style.opacity = "100%";
-            // sub_titles[i+1].style.fontSize = "0.7rem";
             sub_titles[i+1].style.opacity = "20%";
-            // sub_titles[i-1].style.fontSize = "0.7rem";
             sub_titles[i-1].style.opacity = "20%";
           }else if(i==1){
             i++;
-            // sub_titles[i].style.fontSize = "1.2rem";
             sub_titles[i].style.opacity = "100%";
-            // sub_titles[i-2].style.fontSize = "0.7rem";
             sub_titles[i-2].style.opacity = "20%";
-            // sub_titles[i-1].style.fontSize = "0.7rem";
             sub_titles[i-1].style.opacity = "20%";
           }
         }, 2000)

@@ -12,7 +12,6 @@
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;600&family=Noto+Sans+KR&display=swap");
     </style>
-    <!-- <script src="/views/js/result.js"></script> -->
     <title>PicIt!</title>
   </head>
   <body>
@@ -88,8 +87,7 @@
         );
         const select_done = document.querySelector(".select-done");
         const select_reset = document.querySelector(".select-reset");
-        // console.log(arr);
-        // console.log(mean_arr);
+
         // filtering words
         for (let i = 0; i < lenOfWords; i++) {
           let str = mean_arr[i];
@@ -104,64 +102,56 @@
           } else if (final_arr.includes(arr[i]) == true) {
             continue;
           } else if (regex_number.test(arr[i]) == true) {
-            console.log(regex_number.test(arr[i]));
             continue;
           }
-          //  else if (regex_number.test(arr[i]) == true) {
-          //   continue;
-          // }
+
           final_arr.push(arr[i]);
           final_meaning.push(mean_arr[i]);
         }
         let word_num = result_container.children;
         let show_words_len = final_arr.length;
         window.onload = function () {
-          // console.log(word_num);
           word_found.innerText = show_words_len;
           for (let i = 0; i < show_words_len; i++) {
             const temp = document.createElement("div");
             temp.className = "single-word-container";
             temp.innerHTML = `<div class="single-container"><p class="word">${final_arr[i]}</p><div class="delete-btn"><div class="delete-left"></div><div class="delete-right"></div></div></div>`;
-            // console.log(temp_arr);
             word_list.append(temp);
           }
           setTimeout(function () {
             word_list.style.opacity = "100%";
           }, 1000);
         };
+
         // showing results
-        // let show_picked_flag = false;
+
         window.addEventListener("click", (e) => {
           if (e.target.classList[0] == "delete-btn") {
             let parent = e.target.parentNode.parentNode;
             show_words_len = show_words_len - 1;
-            // let word_container = e.target.parentNode;
+
             parent.style.opacity = "0%";
             word_found.innerText = show_words_len;
             setTimeout(function () {
               parent.remove();
             }, 300);
           } else if (e.target.classList[0] == "word") {
-            // show_picked_flag++;
             // if show_flag == true => do something!
             let parent = e.target.parentNode.parentNode;
             let count_word = 0;
             if (e.target.classList.contains("clicked") == true) {
               parent.style.backgroundColor = "rgb(250, 250, 250)";
               e.target.classList.remove("clicked");
-              // count_word--;
             } else {
               parent.style.backgroundColor = "#00ff2d";
               e.target.classList.add("clicked");
-              // count_word++;
             }
             // counting words.
             word_list.childNodes.forEach((node) => {
               let word_clicked = node.childNodes[0].childNodes[0];
-              // console.log(word_clicked.classList);
+
               if (word_clicked.classList.contains("clicked") == true) {
                 count_word++;
-                console.log(count_word);
               }
             });
             if (count_word > 0) {
@@ -208,8 +198,6 @@
               ]);
             }
           }
-          console.log(word_list.childNodes.length);
-          console.log(picked_words.length);
           word_list.style.opacity = "0%";
           highlight_container.style.opacity = "0%";
           result_status_container.style.opacity = "0%";
@@ -228,8 +216,6 @@
           const word_json = document.querySelector(".word-json");
           setTimeout(function () {
             word_list.textContent = "";
-            console.log(result_status_container.childNodes);
-            // highlight_container.style.display = "none";
             result_status_container.childNodes[1].innerText =
               "선택하신 단어들을 이메일로 공유해보세요!";
             result_status_container.childNodes[3].innerText = "";
@@ -237,12 +223,9 @@
           }, 500);
           setTimeout(function () {
             for (let i = 0; i < picked_words.length; i++) {
-              console.log(picked_words[i][0]);
               const temp = document.createElement("div");
               temp.className = "picked-word-container";
               temp.innerHTML = `<p class="picked-word">${picked_words[i][0]}</p><p class="picked-meaning">${picked_words[i][1]}</p>`;
-
-              // console.log(temp_arr);
               word_list.append(temp);
             }
             word_json.value = picked_words;
