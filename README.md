@@ -1,70 +1,90 @@
 # PICIT!
- ## PICIT은 광학식 문자인식 기술 (OCR)과 자연어처리 기술(NLP)을 융합한 영단어 학습 웹사이트입니다.
- **서울과학기술대학교 캡스톤 디자인 및 졸업작품으로 출품하였습니다.*
+ ## 프로젝트 개요 / Project Overview
  
- ### 👀 Language Spec / 사용된 언어
- #### ✔️ Front-end
- <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"><img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"><img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=CSS3&logoColor=white">
+ https://user-images.githubusercontent.com/109443641/221836742-d5500ca8-b1d9-4e63-810c-3044ca60cf95.mp4
+ 
+ **서울과학기술대학교 캡스톤 디자인 및 졸업작품 출품작*
+ 
+#### 프로젝트 컨셉 / Project Concept 
+ 광학 문자인식(Optical Character Recognition)기술과 자연어처리(Natural Language Process) 및 웹 크롤링 기술을 결합하여, 사용자의 이미지로부터 영단어를 인식하여 단어의 의미를 알려주고 모르는 단어를 사용자의 이메일로 공유할 수 있게 하는 웹사이트.
+ 
+#### 프로젝트 참여역할 / Project Scope
+- 프로젝트 기획
+- 프로젝트 디자인
+- 프로젝트 개발 
 
- #### ✔️ Back-end
- <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white">
- 
- ### 👀 Used Libraries / 사용된 라이브러리
+#### 프로젝트 개발기간 / Project Development Period
+2022.09 ~ 2022.12
+
+#### 프로젝트 개발언어 / Project Development Language
+<img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"><img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"><img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"><img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white">
+
+ #### 사용된 라이브러리 / Libraries Used 
  1. Tesseract.js : OCR 처리
  2. Natural.js : NLP 처리
  3. Cheerio : 웹 크롤링
  4. Nodemailer : 사용자 이메일 전송 처리
 
 ---
-https://user-images.githubusercontent.com/109443641/221836742-d5500ca8-b1d9-4e63-810c-3044ca60cf95.mp4
 
- ### 👀 Overview / 개요
- #### 1. WHAT / 목적
- PICIT의 목적은 꽤나 단순합니다. **'사용자가 가지고 있는 영문이 포함된 이미지 파일로부터 단어를 뽑아내서 더욱 간편하게 공부할 수 있게 하자'** 입니다. 
- 다양한 정보가 인터넷을 통해 자유롭게 공개된 지금, 우리는 웹 상에서 다양한 문서들을 보면서 학습을 할 수 있습니다. 원서로 된 자료들을 볼 때, 우리는 종종 모르는 단어가 있으면 하나하나 단어를 찾아가면서 해석하는 과정을 거치는데, 이때 그저 자료 이미지를 PICIT 웹사이트에 업로드함으로써 간편하게 이미지 안의 단어들과 그 의미를 찾아내고, 모르는 단어들만 선택하여 자신의 이메일로 공유할 수 있습니다. 
- 
- #### 2. HOW / 구현 방식 
- 저희는 광학식 문자인식 기술 (Optical Character Recornition, OCR)과 자연어 처리 기술 (Natural Language Processing, NLP)을 융합하여 목적을 달성했습니다. 
- - **광학식 문자인식 기술?**
-  광학식 문자인식 기술이란, 텍스트 이미지를 기계가 읽을 수 있는 텍스트 포맷으로 변환하는 과정을 말합니다. 대표적인 실용예시로, 은행 애플리케이션에서 사용자의 신분 정보를 받아올 때, 텍스트로 받는것이 아니라 신분증 이미지를 받아서 그 안의 텍스트들을 인식하여 추출하는 것이 있습니다. 
- 
-- **자연어처리?**
-  자연어처리 기술이란, 머신러닝 기술을 이용하여 텍스트와 데이터를 처리하고 해석하는 과정입니다. 자연어처리 기술은 현재 굉장히 다양한 분야에서 사용되며, 대표적으로 챗봇과 같은 사용자와의 자연스러운 인터랙션 기능을 제공하는 서비스가 있습니다. 
+## 프로젝트 디테일 / Project Details
+
+### 프로젝트 달성 목표 / Goals
+  #### 이 프로젝트를 통해서 달성하고 싶었던 목표
+  - Node js와 다양한 라이브러리를 결합한 프로젝트를 만든다.
+  - 서버와 클라이언트의 기능을 분리하여 개발을 진행한다.
   
-- **단어인식 및 처리 과정**
-  1) 사용자가 이미지를 업로드하면 서버로 넘어간 이미지의 OCR 처리과정을 거쳐서 내부의 단어들을 모두 추출합니다. 
-  2) 추출된 단어들을 1차적인 필터링 과정으로 넘겨 단어의 사전적 의미가 유효하지 않을 단어들을 제거합니다. (what, when, he, she, it, is, are 등등)
-  3) 남은 단어들의 사전적 의미들을 웹크롤링하여 사전적 의미를 가지고 옵니다. *(단어의 의미에 대한 크롤링은 다음 영어사전을 사용하였습니다.)*
-  4) 3번 과정까지 지난 단어들은 클라이언트 사이드로 넘어가게 되며, 이때 사용자에게 단어를 보여주기 전 *에러로 인해 의미가 잘 담겨있지 않거나*, *숫자가 포함된 단어이거나*, *사람의 이름* 등 유의미한 결과를 포함하지 않는 단어들을 2차적 필터링합니다. 
-  5) 마지막으로 사용자의 화면에 최종 단어들을 띄웁니다. 
+### 프로젝트 특성 / Features 
+ #### 광학 문자인식과 자연어처리 기술의 융합
+ - **단어인식 및 처리 과정**
+  1) 사용자가 이미지를 업로드하면 서버로 넘어간 이미지의 OCR 처리과정을 거쳐서 내부의 단어들을 모두 추출한다. 
+  2) 추출된 단어들을 1차적인 필터링 과정으로 넘겨 단어의 사전적 의미가 유효하지 않을 단어들을 제거한다. (what, when, he, she, it, is, are 등등)
+  3) 남은 단어들의 사전적 의미들을 웹크롤링하여 사전적 의미를 가지고 온다. *(단어의 의미에 대한 크롤링은 다음 영어사전을 사용하였습니다.)*
+  4) 3번 과정까지 지난 단어들은 클라이언트 사이드로 넘어가게 되며, 이때 사용자에게 단어를 보여주기 전 *에러로 인해 의미가 잘 담겨있지 않거나*, *숫자가 포함된 단어이거나*, *사람의 이름* 등 유의미한 결과를 포함하지 않는 단어들을 2차적 필터링한다. 
+  5) 마지막으로 사용자의 화면에 최종 단어들을 띄워, 다음 단계를 진행한다. 
 
 ![프로젝트 구조 001](https://user-images.githubusercontent.com/109443641/217244201-d08cba2d-71a4-4eb3-a9e6-665ab48d05b8.png)
----
 
- ### 👀 Detail / 구현화면
- **<메인화면>**
+ ### 구현화면 / Project Screens
  <img width="1000" alt="PICIT-메인화면" src="https://user-images.githubusercontent.com/109443641/217186185-841a3ec8-9277-4a4c-baec-1839e6d1c626.png">
- 
- **<업로드>**
- <img width="1440" alt="PICIT-업로드화면" src="https://user-images.githubusercontent.com/109443641/217186577-0c44b353-2712-48fb-bfc4-62a27dc90eb4.png">
- 
- **<결과화면>**
+ <img width="1000" alt="PICIT-업로드화면" src="https://user-images.githubusercontent.com/109443641/217186577-0c44b353-2712-48fb-bfc4-62a27dc90eb4.png">
  <img width="1000" alt="PICIT-결과-1" src="https://user-images.githubusercontent.com/109443641/217186678-c5f1bbec-0116-471a-99fb-134874e8414e.png">
  <img width="1000" alt="PICIT-결과-2" src="https://user-images.githubusercontent.com/109443641/217186686-cd1b3a26-95f7-4b9e-82c8-8fa8790f0086.png">
  <img width="1000" alt="PICIT-결과-3" src="https://user-images.githubusercontent.com/109443641/217186689-1aef711d-e5f1-48f5-a909-18059b0143b0.png">
  <img width="1000" alt="PICIT-결과-4" src="https://user-images.githubusercontent.com/109443641/217186694-2f93aba8-6964-4c21-a30d-dde7bc6e4c87.png">
-
-**<이메일 전송>**
 <img width="1000" alt="PICIT-마지막화면" src="https://user-images.githubusercontent.com/109443641/217187132-6655f44c-6817-4393-af09-454d5c3f1716.png">
 <img width="1000" alt="PICIT-메일전송화면" src="https://user-images.githubusercontent.com/109443641/217187144-f43a1921-a602-459d-a73f-92b0915b67c9.png">
 
 --- 
- ### 👀 Improvements / 개선사항
- 1. 이메일 전송시에 사용자가 받는 메일의 가독성을 높일 필요가 있습니다. 
- 2. 자연어처리 필터링을 좀 더 세밀하게 다듬어서 사용성을 높일 필요가 있습니다. 
- 3. 전체적인 디자인 개선이 필요하다고 생각합니다. 
----
-### 👀 Thoughts / 고찰
+
+## 프로젝트 리뷰 / Project Review
+ 
+ ### 개선사항 / Improvements
+ 
+ #### 이메일 공유 결과
+ - 마지막 단계에서 사용자의 이메일로 보내는 컨텐츠의 디자인을 좀 더 보기좋게 구현할 필요가 있다. 
+ 
+ #### 단어 필터링 성능 개선
+ - 불용어의 포함범위에 좀 더 정교한 정규표현식을 활용하여 불필요한 단어들을 거르는 정확도를 개선할 필요가 있다고 생각한다.
+ - 인식하지 못하는 문자를 최대한 줄이기 위해, 이미지의 전처리 과정을 더 추가할 필요가 있다고 생각한다. 예를 들어, 이미지의 흑백처리와 선명도 처리나 이미지 데이터의 크기를 줄이는 과정을 추가하는 방법이 있다고 보여진다. 
+ 
+ #### 전반적인 디자인
+ - 전반적으로 디자인에서 실패한 프로젝트라는 생각이 든다. 사용자가 웹사이트를 더 자주 사용하게 하려면, 이 프로젝트의 경우에 더 쉽고 간단하게 디자인을 기획할 필요가 있다. 
+ - 서버에서 데이터를 처리하는 과정에서 이미지에 따라서 시간이 오래 걸리는 경우가 있는데, 이때 로딩화면을 구현할 필요가 있다고 보여진다. 
+
+### 이번 프로젝트로 배운것 / Things I Learned 
+
+#### Node.js 
+- Node.js를 활용하여 서버를 구축하고, 여러가지 라이브러리를 활용하여 프로젝트를 만드는 경험을 통해 개발영역을 넓힐 수 있었다. 
+- 백엔드의 데이터 처리와 프론트엔드의 데이터 활용을 분리함으로써, 서로간의 통신이 어떤식으로 이루어지는지에 대한 이해와 이를 활용하는 방식에 대해 배울 수 있었다.
+
+#### 처리 시간
+- 이미지에 따라서 처리시간이 일정 수준 이상으로 높아지는 현상이 있어, 이러한 문제를 해결하는 방법에 대해 고민해볼 수 있었다. 이를 해결하기 위해 여러가지 접근을 할 필요가 있었다. 백엔드에서 데이터를 처리하는 과정 자체의 시간을 줄일 필요도 있었으며, 이와 동시에 그동안 사용자의 관심이 이탈되지 않도록 프론트엔드상에서 개선할 필요성을 느끼면서, 하나의 문제를 해결하기 위해 여러 방법을 활용하여 개선할 필요가 있겠다는 생각을 하게 되었다.
+
+
+
+### 기타 생각들 / Thoughts
+
 *PICIT프로젝트는 웹 개발자로서 처음 완성한 웹 프로젝트라는 점에서 내게 큰 의미가 있다. 대학에서 컴퓨터 공학을 전공하면서도 진로에 대해 계속 고민했다. 그러던 중 인터렉티브 웹/ 프론트엔드 개발에서 큰 흥미를 느끼고 짧은 시간 동안 깊이 빠져들었다. PICIT은 말 그대로 제로의 상태에서 시작하여 약 1년의 기간 동안 겁 없이 뛰어든 프로젝트였다. 아이디어 도출부터 기능 구현, 디자인까지 모든 과정을 담당하며, 하나하나 직접 만들어보는 과정에서 큰 만족감과 성취감을 느끼며 밤낮없이 진행했다. 첫 프로젝트를 기간내에 꾸준히 진행하여 완성했다는 것에 감사했다.*
 
 *그럼에도 불구하고, 하나의 프로젝트를 완성하고 나니, 중점을 두어야 할 부분과 앞으로 보완이 필요한 부분이 더욱 선명하게 보였다.*
